@@ -1,0 +1,16 @@
+<div ng-controller="myCtrl">
+    <h2 ng-bind="dataJson.boardTitle"></h2>
+    <button type="button" class="btn btn-info" ng-click="addList(dataJson.lists)">Add List</button>
+    <ul ng-repeat="list in dataJson.lists" style="float:left;padding: 40px;background: azure;margin: 10px;">
+        <span class="glyphicon glyphicon-remove pull-right" ng-click="removeList(list.listID,dataJson.lists)"></span>
+        <li> {{list.listTitle}}<span class="glyphicon glyphicon-plus pull-right" ng-click="addCard(list)"></span></li>
+        <ul ng-repeat="card in list.cards|limitTo:2">
+            <li><a href="#" data-ng-click="editCard(list.listID,card)">{{card.cardTitle}}</a></li>
+            <li ng-bind="card.description"></li>
+            <ul ng-repeat="comt in card.comments">
+                <li ng-bind="comt"></li>
+            </ul>
+        </ul>
+        <span ng-if="list.cards.length>2"><a ng-click="gotoList(list)">More cards.....</a></span>
+    </ul>
+</div>

@@ -1,0 +1,10 @@
+<div>
+    <h2 ng-bind="newCtrl.list.listTitle"></h2>
+    <ul ng-repeat="card in newCtrl.list.cards">
+        <li ng-bind="card.cardTitle"></li>
+        <li ng-bind="card.description"></li>
+        <ul ng-repeat="comt in card.comments">
+            <li ng-bind="comt"></li>
+        </ul>
+    </ul>
+</div>

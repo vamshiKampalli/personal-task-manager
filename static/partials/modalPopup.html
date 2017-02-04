@@ -1,0 +1,28 @@
+
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Add Card<a class="glyphicon glyphicon-trash  pull-right" data-ng-click="removeCard(tempCard)"></a></h3>
+</div>
+<form name="add_card_form">
+    <div class="modal-body" id="modal-body">
+        <div class="row">
+            <div class="col-xs-4">
+                <label> Title:</label>
+                <input type="text" class="form-control form-group" name="cname" ng-model="tempCard.cardTitle" required>
+            </div>
+            <div class="col-xs-4">
+                <label>Description:</label>
+                <textarea name="card_description" class="form-control form-group" ng-model="tempCard.description" required></textarea>
+            </div>
+            <div class="col-xs-4">
+                <label> Comments: <span class="glyphicon glyphicon-plus pull-right" ng-click="addComment(tempCard.comments)"></span></label>
+                <div ng-repeat="comments in tempCard.comments track by $index">
+                    <input type="text" name="comment+{{$index}}" class="form-control form-group" ng-model="tempCard.comments[$index]" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit" ng-click="ok(add_card_form)">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</form>
